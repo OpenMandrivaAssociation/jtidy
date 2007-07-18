@@ -33,7 +33,7 @@
 Summary:        HTML syntax checker and pretty printer
 Name:           jtidy
 Version:        1.0
-Release:        %mkrel 0.1.r7dev.1.2.3
+Release:        %mkrel 0.1.r7dev.1.2.4
 Epoch:          2
 License:        BSD-Style
 URL:            http://jtidy.sourceforge.net/
@@ -41,11 +41,11 @@ Source0:        http://download.sf.net/jtidy/jtidy-04aug2000r7-dev.zip
 Source1:        %{name}.jtidy.script
 Patch0:         %{name}.noapis.patch
 Requires:       jaxp_parser_impl
-Requires:       xml-commons-apis
+Requires:       xml-commons-jaxp-1.3-apis
 Requires:       jpackage-utils
 BuildRequires:  ant >= 0:1.6
 BuildRequires:  jpackage-utils >= 0:1.5
-BuildRequires:  xml-commons-apis
+BuildRequires:  xml-commons-jaxp-1.3-apis
 Group:          Development/Java
 %if ! %{gcj_support}
 BuildArch:      noarch
@@ -93,7 +93,7 @@ find . -name "*.jar" -exec %__rm -f {} \;
 %__chmod -R go=u-w *
 
 %build
-export CLASSPATH=$(build-classpath xml-commons-apis)
+export CLASSPATH=$(build-classpath xml-commons-jaxp-1.3-apis)
 %ant jar javadoc
 
 %install
@@ -118,7 +118,7 @@ export CLASSPATH=$(build-classpath xml-commons-apis)
 # ant.d
 %__mkdir_p %{buildroot}%{_sysconfdir}/ant.d
 %__cat > %{buildroot}%{_sysconfdir}/ant.d/%{name} << EOF
-jtidy xml-commons-apis
+jtidy xml-commons-jaxp-1.3-apis
 EOF
 
 %if %{gcj_support}
