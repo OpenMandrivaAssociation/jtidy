@@ -33,7 +33,7 @@
 Summary:        HTML syntax checker and pretty printer
 Name:           jtidy
 Version:        1.0
-Release:        %mkrel 0.1.r7dev.1.2.4
+Release:        %mkrel 0.1.r7dev.1.2.5
 Epoch:          2
 License:        BSD-Style
 URL:            http://jtidy.sourceforge.net/
@@ -56,8 +56,6 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 %if %{gcj_support}
 BuildRequires:    java-gcj-compat-devel
-Requires(post):   java-gcj-compat
-Requires(postun): java-gcj-compat
 %endif
 
 %description
