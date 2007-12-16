@@ -33,7 +33,7 @@
 Summary:        HTML syntax checker and pretty printer
 Name:           jtidy
 Version:        1.0
-Release:        %mkrel 0.1.r7dev.1.2.5
+Release:        %mkrel 0.1.r7dev.1.2.6
 Epoch:          2
 License:        BSD-Style
 URL:            http://jtidy.sourceforge.net/
@@ -44,7 +44,7 @@ Requires:       jaxp_parser_impl
 Requires:       xml-commons-jaxp-1.3-apis
 Requires:       jpackage-utils
 BuildRequires:  ant >= 0:1.6
-BuildRequires:  jpackage-utils >= 0:1.5
+BuildRequires:  java-rpmbuild >= 0:1.5
 BuildRequires:  xml-commons-jaxp-1.3-apis
 Group:          Development/Java
 %if ! %{gcj_support}
