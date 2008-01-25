@@ -33,7 +33,7 @@
 Summary:        HTML syntax checker and pretty printer
 Name:           jtidy
 Version:        1.0
-Release:        %mkrel 0.1.r7dev.1.2.6
+Release:        %mkrel 0.1.r7dev.1.2.7
 Epoch:          2
 License:        BSD-Style
 URL:            http://jtidy.sourceforge.net/
@@ -67,8 +67,6 @@ parser for real-world HTML.
 %package javadoc
 Group:          Development/Java
 Summary:        Javadoc for %{name}
-Requires(post):   /bin/rm,/bin/ln
-Requires(postun): /bin/rm
 
 %description javadoc
 Javadoc for %{name}.
@@ -85,14 +83,13 @@ Utility scripts for %{name}.
 %prep
 %setup -q -n %{name}-04aug2000r7-dev
 %patch0 -p0
-# remove all binary libs and javadocs
-find . -name "*.jar" -exec %__rm -f {} \;
+%remove_java_binaries
 # correct silly permissions
 %__chmod -R go=u-w *
 
 %build
 export CLASSPATH=$(build-classpath xml-commons-jaxp-1.3-apis)
-%ant jar javadoc
+%ant -Dant.build.javac.source=1.4 jar javadoc
 
 %install
 %__rm -rf %{buildroot}
@@ -128,18 +125,12 @@ EOF
 
 %if %{gcj_support}
 %post
-if [ -x %{_bindir}/rebuild-gcj-db ]
-then
-  %{_bindir}/rebuild-gcj-db
-fi
+%{update_gcjdb}
 %endif
 
 %if %{gcj_support}
 %postun
-if [ -x %{_bindir}/rebuild-gcj-db ]
-then
-  %{_bindir}/rebuild-gcj-db
-fi
+%{clean_gcjdb}
 %endif
 
 %files
