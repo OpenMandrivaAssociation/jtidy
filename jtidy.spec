@@ -33,7 +33,7 @@
 Summary:        HTML syntax checker and pretty printer
 Name:           jtidy
 Version:        1.0
-Release:        %mkrel 0.1.r7dev.1.2.7
+Release:        %mkrel 0.1.r7dev.1.2.8
 Epoch:          2
 License:        BSD-Style
 URL:            http://jtidy.sourceforge.net/
