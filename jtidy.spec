@@ -3,9 +3,10 @@
 
 Name:             jtidy
 Version:          1.0
-Release:          0.16.20100930svn1125.1%{?dist}
+Release:          0.20.20100930svn1125.1
 Epoch:            2
 Summary:          HTML syntax checker and pretty printer
+Group:		  Development/Java
 License:          zlib
 URL:              http://jtidy.sourceforge.net/
 # svn export -r1125 https://jtidy.svn.sourceforge.net/svnroot/jtidy/trunk/jtidy/ jtidy
@@ -67,18 +68,8 @@ cat > %{buildroot}%{_sysconfdir}/ant.d/%{name} << EOF
 jtidy
 EOF
 
-# Workaround for RPM bug #646523 - can't change symlink to directory
-# TODO: Remove this in F-22
-%pretrans javadoc -p <lua>
-dir = "%{_javadocdir}/%{name}"
-dummy = posix.readlink(dir) and os.remove(dir)
-
-
-%files
+%files -f .mfiles
 %doc LICENSE.txt
-%{_javadir}/*
-%{_mavenpomdir}/*
-%{_mavendepmapfragdir}/*
 %attr(755, root, root) %{_bindir}/*
 %config(noreplace) %{_sysconfdir}/ant.d/%{name}
 
