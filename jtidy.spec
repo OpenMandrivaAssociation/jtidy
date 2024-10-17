@@ -8,7 +8,7 @@ Epoch:            2
 Summary:          HTML syntax checker and pretty printer
 Group:		  Development/Java
 License:          zlib
-URL:              http://jtidy.sourceforge.net/
+URL:              https://jtidy.sourceforge.net/
 # svn export -r1125 https://jtidy.svn.sourceforge.net/svnroot/jtidy/trunk/jtidy/ jtidy
 # tar caf jtidy.tar.xz jtidy
 Source0:          %{name}.tar.xz
